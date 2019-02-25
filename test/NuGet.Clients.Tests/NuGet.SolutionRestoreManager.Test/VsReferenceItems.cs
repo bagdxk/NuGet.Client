@@ -7,12 +7,11 @@ using System.Collections.ObjectModel;
 
 namespace NuGet.SolutionRestoreManager.Test
 {
-
-    internal abstract class ItemList<T> : Collection<T>
+    internal class VsReferenceItems : Collection<IVsReferenceItem>, IVsReferenceItems
     {
-        public ItemList() : base() { }
+        public VsReferenceItems() : base() { }
 
-        public ItemList(IEnumerable<T> collection) : base()
+        public VsReferenceItems(IEnumerable<IVsReferenceItem> collection)
         {
             if (collection == null)
             {
@@ -25,7 +24,7 @@ namespace NuGet.SolutionRestoreManager.Test
             }
         }
 
-        public T Item(Object index)
+        public IVsReferenceItem Item(Object index)
         {
             if (index is int)
             {
@@ -33,15 +32,8 @@ namespace NuGet.SolutionRestoreManager.Test
             }
             else
             {
-                return default(T);
+                return null;
             }
         }
-    }
-
-    internal class VsReferenceItems : ItemList<IVsReferenceItem>, IVsReferenceItems
-    {
-        public VsReferenceItems() : base() { }
-
-        public VsReferenceItems(IEnumerable<IVsReferenceItem> collection) : base(collection) { }
     }
 }
