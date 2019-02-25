@@ -1316,7 +1316,7 @@ namespace NuGet.SolutionRestoreManager.Test
                 "NuGet.Protocol:5.1.0");
             AssertDownloadPackages(actualTfi,
                 "NetCoreTargetingPack:[1.0.0]",
-                "NetCoreRuntimePack:[2.0.0]"
+                "NetCoreTargetingPack:[2.0.0]"
                 );
         }
 
